@@ -60,27 +60,6 @@
             font-size: 28px;
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
-
-        /* Sol Alt AI Yüzen Buton & Animasyon */
-        .ai-float-btn {
-            position: fixed;
-            bottom: 25px;
-            left: 25px;
-            z-index: 999;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .ai-float-btn:hover {
-            transform: scale(1.08);
-        }
-        .ai-pulse {
-            animation: pulse-ring 2s infinite;
-        }
-        @keyframes pulse-ring {
-            0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.5); }
-            70% { box-shadow: 0 0 0 14px rgba(220, 38, 38, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
-        }
     </style>
 </head>
 <body class="bg-slate-100 text-slate-800 font-sans antialiased flex flex-col min-h-screen bg-pattern">
@@ -572,7 +551,7 @@
                 </div>
                 <div class="bg-rose-50 p-4 rounded-2xl border border-rose-100">
                     <h4 class="font-bold text-rose-900"><i class="fa-solid fa-video mr-1"></i> Kutluhan Köseoğlu</h4>
-                    <p class="text-slate-600 mt-1"><span class="lang-tr">Erasmus Projeleri Bulunması & İçerik Derlemesi & Yapayzeka Kalibrasyonu</span><span class="lang-en">Erasmus Project Discovery & Content Compilation & AI Calibration</span></p>
+                    <p class="text-slate-600 mt-1"><span class="lang-tr">Erasmus Projeleri Bulunması & İçerik Derlemesi</span><span class="lang-en">Erasmus Project Discovery & Content Compilation</span></p>
                 </div>
             </div>
         </div>
@@ -582,49 +561,6 @@
         <p><span class="lang-tr">&copy; 2026 Merzifon Fen Lisesi. Tüm hakları saklıdır.</span><span class="lang-en">&copy; 2026 Merzifon Science High School. All rights reserved.</span></p>
         <p class="text-red-400 font-medium tracking-wider">by Efe Güzel</p>
     </footer>
-
-    <!-- SOL ALT YÜZEN AI BUTONU -->
-    <div onclick="toggleAiChat()" class="ai-float-btn bg-white p-1.5 rounded-full shadow-2xl border-2 border-red-600 flex items-center gap-2 pr-4 ai-pulse">
-        <img src="mefocan.png" class="w-12 h-12 rounded-full object-cover border border-slate-200" alt="MEFOCAN AI">
-        <div class="text-left">
-            <span class="block font-black text-xs text-red-950 tracking-wide leading-none">MEFOCAN AI</span>
-            <span class="text-[10px] font-bold text-red-600">Okul Asistanı</span>
-        </div>
-    </div>
-
-    <!-- MEFOCAN AI CHAT MODALI -->
-    <div id="ai-chat-modal" class="fixed bottom-24 left-6 z-50 hidden w-80 sm:w-96 bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col h-[480px] transition-all">
-        <div class="bg-gradient-to-r from-red-900 to-red-700 text-white p-4 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <img src="mefocan.png" class="w-9 h-9 rounded-full object-cover border-2 border-white/80" alt="MEFOCAN">
-                <div>
-                    <h3 class="font-extrabold text-sm leading-tight">MEFOCAN AI</h3>
-                    <p class="text-[10px] text-red-200 flex items-center gap-1">
-                        <span class="w-1.5 h-1.5 bg-emerald-400 rounded-full inline-block"></span> Çevrimiçi • MFL Asistanı
-                    </p>
-                </div>
-            </div>
-            <button onclick="toggleAiChat()" class="text-white/80 hover:text-white font-bold text-xl px-2">&times;</button>
-        </div>
-
-        <div id="ai-messages" class="flex-grow p-4 overflow-y-auto space-y-3 text-xs bg-slate-50">
-            <div class="flex gap-2 items-start">
-                <img src="mefocan.png" class="w-6 h-6 rounded-full object-cover mt-1" alt="AI">
-                <div class="bg-white border border-slate-200 p-3 rounded-2xl rounded-tl-none shadow-sm text-slate-700 max-w-[85%] leading-relaxed">
-                    Merhaba! Ben Merzifon Fen Lisesi yapay zeka asistanı MEFOCAN. Okulumuzun tarihi, projelerimiz ve genel bilgiler hakkında bana dilediğini sorabilirsin!
-                </div>
-            </div>
-        </div>
-
-        <div class="p-3 bg-white border-t border-slate-200">
-            <form onsubmit="sendAiMessage(event)" class="flex gap-2">
-                <input type="text" id="ai-user-input" placeholder="Bir soru sorun..." class="flex-grow px-4 py-2 bg-slate-100 border border-slate-300 rounded-xl text-xs focus:outline-none focus:border-red-600">
-                <button type="submit" id="ai-send-btn" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl text-xs transition-colors shadow">
-                    <i class="fa-solid fa-paper-plane"></i>
-                </button>
-            </form>
-        </div>
-    </div>
 
     <!-- SCRIPT ALANI -->
     <script>
@@ -920,78 +856,6 @@
 
         function refreshAll() { renderNews(); renderProjects(); renderStaff(); }
         window.onload = function() { refreshAll(); };
-
-        function toggleAiChat() {
-            const chatModal = document.getElementById('ai-chat-modal');
-            chatModal.classList.toggle('hidden');
-        }
-
-        async function sendAiMessage(e) {
-            e.preventDefault();
-            const input = document.getElementById('ai-user-input');
-            const userText = input.value.trim();
-            if (!userText) return;
-
-            const messagesDiv = document.getElementById('ai-messages');
-
-            messagesDiv.innerHTML += `
-                <div class="flex justify-end">
-                    <div class="bg-red-600 text-white p-3 rounded-2xl rounded-tr-none shadow-sm max-w-[85%] leading-relaxed">
-                        ${escapeHtml(userText)}
-                    </div>
-                </div>
-            `;
-            input.value = '';
-            messagesDiv.scrollTop = messagesDiv.scrollHeight;
-
-            const loadingId = 'loading-' + Date.now();
-            messagesDiv.innerHTML += `
-                <div id="${loadingId}" class="flex gap-2 items-start">
-                    <img src="mefocan.png" class="w-6 h-6 rounded-full object-cover mt-1" alt="AI">
-                    <div class="bg-white border border-slate-200 p-3 rounded-2xl rounded-tl-none shadow-sm text-slate-500 max-w-[85%] italic">
-                        MEFOCAN yanıt yazıyor...
-                    </div>
-                </div>
-            `;
-            messagesDiv.scrollTop = messagesDiv.scrollHeight;
-
-            try {
-                const response = await fetch('/.netlify/functions/chat', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ message: userText })
-                });
-
-                const data = await response.json();
-                document.getElementById(loadingId)?.remove();
-
-                const aiReply = data.reply || "Üzgünüm, şu an yanıt oluşturamıyorum.";
-
-                messagesDiv.innerHTML += `
-                    <div class="flex gap-2 items-start">
-                        <img src="mefocan.png" class="w-6 h-6 rounded-full object-cover mt-1" alt="AI">
-                        <div class="bg-white border border-slate-200 p-3 rounded-2xl rounded-tl-none shadow-sm text-slate-700 max-w-[85%] leading-relaxed">
-                            ${escapeHtml(aiReply)}
-                        </div>
-                    </div>
-                `;
-            } catch (err) {
-                document.getElementById(loadingId)?.remove();
-                messagesDiv.innerHTML += `
-                    <div class="flex gap-2 items-start">
-                        <img src="mefocan.png" class="w-6 h-6 rounded-full object-cover mt-1" alt="AI">
-                        <div class="bg-red-50 border border-red-200 p-3 rounded-2xl rounded-tl-none shadow-sm text-red-700 max-w-[85%] leading-relaxed">
-                            Bağlantı hatası oluştu. Lütfen Netlify ayarlarınızı kontrol edin.
-                        </div>
-                    </div>
-                `;
-            }
-            messagesDiv.scrollTop = messagesDiv.scrollHeight;
-        }
-
-        function escapeHtml(text) {
-            return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
-        }
     </script>
 </body>
 </html>
