@@ -44,17 +44,20 @@
     <!-- Sol Orta-Üst Atatürk Görseli -->
     <img src="ataturk.png" class="ataturk-watermark" alt="Atatürk">
 
-    <!-- Üst Kurumsal MEB Barı -->
-    <div class="bg-slate-900 text-slate-300 text-xs py-2 px-4 border-b border-slate-800 relative z-10">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <span>
+    <!-- Üst Kurumsal MEB Barı (Mobilde Dikey ve Rahat Yerleşim) -->
+    <div class="bg-slate-900 text-slate-300 text-xs py-2.5 px-4 border-b border-slate-800 relative z-10">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <span class="text-center sm:text-left">
                 <span class="lang-tr">T.C. Millî Eğitim Bakanlığı | Amasya - Merzifon Fen Lisesi</span>
                 <span class="lang-en">Ministry of National Education | Amasya - Merzifon Science High School</span>
             </span>
             <div class="flex items-center space-x-4">
-                <button onclick="toggleLanguage()" class="font-bold text-white bg-red-600 px-3 py-1 rounded hover:bg-red-700 transition-colors cursor-pointer shadow-sm">
-                    <span class="lang-tr">EN / <span class="underline">TR</span></span>
-                    <span class="lang-en"><span class="underline">EN</span> / TR</span>
+                <button onclick="toggleLanguage()" class="font-bold text-white bg-red-600 px-4 py-1.5 rounded-lg hover:bg-red-700 transition-colors cursor-pointer shadow-sm text-xs flex items-center space-x-1">
+                    <i class="fa-solid fa-globe"></i>
+                    <span>
+                        <span class="lang-tr">EN / <span class="underline">TR</span></span>
+                        <span class="lang-en"><span class="underline">EN</span> / TR</span>
+                    </span>
                 </button>
             </div>
         </div>
@@ -62,32 +65,32 @@
 
     <!-- Ana Header & Kırmızı Başlık Alanı -->
     <header class="meb-red text-white shadow-lg sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-4 cursor-pointer" onclick="switchTab('anasayfa')">
-                <img src="image_3.png" class="h-14 w-auto object-contain bg-white p-1.5 rounded shadow" alt="MFL Logo">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('anasayfa')">
+                <img src="image_3.png" class="h-12 w-auto object-contain bg-white p-1 rounded shadow" alt="MFL Logo">
                 <div>
-                    <h1 class="font-extrabold text-lg sm:text-xl tracking-wide">
+                    <h1 class="font-extrabold text-sm sm:text-lg tracking-wide leading-tight">
                         <span class="lang-tr">MERZİFON FEN LİSESİ</span>
                         <span class="lang-en">MERZİFON SCIENCE HIGH SCHOOL</span>
                     </h1>
-                    <p class="text-xs text-red-200">
-                        <span class="lang-tr">Resmi Eğitim Portalı ve Bina Tarihi</span>
-                        <span class="lang-en">Official Education Portal & Building History</span>
+                    <p class="text-[11px] text-red-200">
+                        <span class="lang-tr">Resmi Eğitim Portalı</span>
+                        <span class="lang-en">Official Education Portal</span>
                     </p>
                 </div>
             </div>
 
             <!-- Sağ Üst Burger Menü -->
             <div class="relative">
-                <button onclick="toggleDropdownMenu()" class="px-4 py-2.5 bg-red-800 hover:bg-red-700 text-white rounded-xl transition-all font-semibold text-sm cursor-pointer flex items-center space-x-2 border border-red-700 shadow">
-                    <i class="fa-solid fa-bars text-lg"></i>
+                <button onclick="toggleDropdownMenu()" class="px-3.5 py-2 bg-red-800 hover:bg-red-700 text-white rounded-xl transition-all font-semibold text-xs cursor-pointer flex items-center space-x-2 border border-red-700 shadow">
+                    <i class="fa-solid fa-bars text-base"></i>
                     <span class="hidden sm:inline">
                         <span class="lang-tr">Menü</span>
                         <span class="lang-en">Menu</span>
                     </span>
                 </button>
-                <div id="dropdown-menu" class="absolute right-0 mt-2 w-72 bg-white text-slate-800 rounded-2xl shadow-2xl border border-slate-200 hidden z-50 p-2 space-y-1">
-                    <button onclick="switchTab('anasayfa'); toggleDropdownMenu();" class="w-full text-left px-4 py-2 hover:bg-red-50 text-red-950 rounded-xl text-xs font-semibold transition-colors flex items-center space-x-3">
+                <div id="dropdown-menu" class="absolute right-0 mt-2 w-64 bg-white text-slate-800 rounded-2xl shadow-2xl border border-slate-200 hidden z-50 p-2 space-y-1">
+                    <button onclick="switchTab('anasayfa'); toggleDropdownMenu();" class="w-full text-left px-4 py-2.5 hover:bg-red-50 text-red-950 rounded-xl text-xs font-semibold transition-colors flex items-center space-x-3">
                         <i class="fa-solid fa-house text-red-600 w-4"></i>
                         <span><span class="lang-tr">Ana Sayfa</span><span class="lang-en">Home Page</span></span>
                     </button>
@@ -97,21 +100,21 @@
                             <span class="lang-tr">Okul Yapısı ve Tarihi</span>
                             <span class="lang-en">School Structure & History</span>
                         </div>
-                        <button onclick="switchTab('binatarihi'); toggleDropdownMenu();" class="w-full text-left px-4 py-2 hover:bg-red-50 text-red-950 rounded-xl text-xs font-medium transition-colors flex items-center space-x-3">
+                        <button onclick="switchTab('binatarihi'); toggleDropdownMenu();" class="w-full text-left px-4 py-2.5 hover:bg-red-50 text-red-950 rounded-xl text-xs font-medium transition-colors flex items-center space-x-3">
                             <i class="fa-solid fa-building-columns text-red-600 w-4"></i>
                             <span><span class="lang-tr">Bina Tarihi ve İncelemesi</span><span class="lang-en">Building History & Analysis</span></span>
                         </button>
                     </div>
 
                     <div class="border-t border-slate-100 my-1 pt-1">
-                        <button onclick="switchTab('projeler'); toggleDropdownMenu();" class="w-full text-left px-4 py-2 hover:bg-red-50 text-red-950 rounded-xl text-xs font-semibold transition-colors flex items-center space-x-3">
+                        <button onclick="switchTab('projeler'); toggleDropdownMenu();" class="w-full text-left px-4 py-2.5 hover:bg-red-50 text-red-950 rounded-xl text-xs font-semibold transition-colors flex items-center space-x-3">
                             <i class="fa-solid fa-diagram-project text-red-600 w-4"></i>
                             <span><span class="lang-tr">Projelerimiz (Erasmus+)</span><span class="lang-en">Our Projects (Erasmus+)</span></span>
                         </button>
                     </div>
 
                     <div class="border-t border-slate-100 my-1 pt-1">
-                        <button onclick="openAdminLoginModal(); toggleDropdownMenu();" class="w-full text-left px-4 py-2 hover:bg-red-100 text-red-700 rounded-xl text-xs font-bold transition-colors flex items-center space-x-3">
+                        <button onclick="openAdminLoginModal(); toggleDropdownMenu();" class="w-full text-left px-4 py-2.5 hover:bg-red-100 text-red-700 rounded-xl text-xs font-bold transition-colors flex items-center space-x-3">
                             <i class="fa-solid fa-lock text-red-600 w-4"></i>
                             <span><span class="lang-tr">Yönetici Girişi (Admin)</span><span class="lang-en">Admin Login</span></span>
                         </button>
